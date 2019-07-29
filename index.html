@@ -2,90 +2,28 @@
 <html>
 
 <head>  
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 
 <body>
-  <p>Rock, Paper, Scissors</p>
-  <p id="winner"> </p>
+    <div class="top-bar">
+        <a class="homepage" href="https://github.com/austinstockhecke">By Austin Stockhecke</a>
+    </div>
+
+  <div class="wrapper">
+    <p>The true OG game. Play 5 rounds and see who is the toughest.</p>
+    <p id="ties">Tie count:</p>
+    <p id="player-win">Player count:</p>
+    <p id="comp-win">Computer count:</p>
+    <button id="rock"><span>Rock</span></button>
+    <button id="paper"><span>Paper</span></button>
+    <button id="scissors"><span>Scissors</span></button> 
+  </div>
+  <br \>
+  <div id="results"> </div>
+  <div class="bot-nav">
+  </div>
 </body>
 
-<script>
-        const gameChoice = ["rock","paper","scissors"];
-        var gamesPlayed = 0; 
-        var compWin = 0;
-        var playWin = 0;
-        var tie = 0;
-
-        var elem = document.getElementById("winner");
-
-        function playerSelection(){
-            var playerSelect = prompt("Enter rock, paper, or scissors");
-            playerSelect = playerSelect.toLowerCase();
-            return playerSelect;
-        }
-
-        function computerChoice(array) {
-            var r = Math.floor(Math.random() * Math.floor(3));
-            return array[r];
-        }
-        function playRound(playerSelect, computerSelection) {
-            ++gamesPlayed;
-            computerSelection = computerChoice(gameChoice);
-            if(computerSelection == playerSelect) {
-                ++tie;
-                return "tie!";
-            }
-            if(computerSelection == "rock") {
-                if(playerSelect == "scissors"){
-                    ++compWin;
-                    return "Computer Wins";
-                }
-                else{
-                    ++playWin;
-                    return "Player Wins";
-                }
-            }
-            if(computerSelection == "scissors") {
-                if(playerSelect == "paper") {
-                    ++compWin;
-                    return "Computer Wins";
-                }
-                else {
-                    ++playWin;
-                    return "Player Wins";
-                }
-            }
-            if(computerSelection == "paper") {
-                if(playerSelect == "rock") {
-                    ++compWin;
-                    return "Computer Wins";
-                }
-                else {
-                    ++playWin;
-                    return "Player Wins";
-                }
-            }
-            
-        }
-
-
-        function game(){
-            var playerChoice = playerSelection();
-            return playRound(playerChoice,computerChoice(gameChoice));
-            }
-        
-        while (gamesPlayed != 5) {
-            game();
-        }
-
-        if(playWin > compWin) {
-           elem.innerHTML = "You won " + playWin + " games out of 5";
-        }
-        else if(compWin > playWin) {
-           elem.innerHTML = "Computer won " + compWin + " games out of 5";
-        }
-        else {
-            elem.innerHTML = "Magically, every game was a tie.";
-        }              
-    </script>
+<script type="text/javascript" src="./javascript.js"></script>
 </html>
